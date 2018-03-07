@@ -1,49 +1,36 @@
-var Todo = require('../models/todo');
 
 exports.getTodos = function(req, res, next){
 
-    Todo.find(function(err, todos) {
+    res.json("Todos");
 
-        if (err){
-            res.send(err);
-        }
+}
 
-        res.json(todos);
+exports.getTodo = function(req, res, next){
 
-    });
+    var todo =  req.params.todo_id;
+
+    res.json("Todo "+ todo);
+
+}
+
+exports.updateTodo = function(req, res, next){
+
+    var todo =  req.params.todo_id;
+
+    res.json("Todo "+ todo + " updated");
 
 }
 
 exports.createTodo = function(req, res, next){
 
-    Todo.create({
-        title : req.body.title
-    }, function(err, todo) {
-
-        if (err){
-            res.send(err);
-        }
-
-        Todo.find(function(err, todos) {
-
-            if (err){
-                res.send(err);
-            }
-
-            res.json(todos);
-
-        });
-
-    });
+    res.json("Todo created");
 
 }
 
 exports.deleteTodo = function(req, res, next){
 
-    Todo.remove({
-        _id : req.params.todo_id
-    }, function(err, todo) {
-        res.json(todo);
-    });
+    var todo =  req.params.todo_id;
+
+    res.json("Todo "+ todo +" deleted");
 
 }

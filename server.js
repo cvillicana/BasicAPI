@@ -3,7 +3,6 @@ var express      = require('express'),
   logger         = require('morgan'),
   bodyParser     = require('body-parser'),
   cors           = require('cors'),
-  databaseConfig = require('./config/database'),
   router         = require('./routes');
 
 app.listen(process.env.PORT || 8080);
