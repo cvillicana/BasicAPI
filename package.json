@@ -1,0 +1,22 @@
+{
+  "name": "trainig-server",
+  "version": "0.1.0",
+  "description": "Trainin server",
+  "engines": {
+    "node": "8.5.0"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "morgan": "^1.7.0",
+    "multer": "^1.3.0",
+    "node-schedule": "^1.2.5"
+  }
+}
