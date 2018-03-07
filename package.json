@@ -1,7 +1,7 @@
 {
-  "name": "trainig-server",
+  "name": "basicAPI",
   "version": "0.1.0",
-  "description": "Trainin server",
+  "description": "Basic API",
   "engines": {
     "node": "8.5.0"
   },

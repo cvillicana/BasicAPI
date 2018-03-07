@@ -1,1 +1,1 @@
-CarPool-server
+Basic API
