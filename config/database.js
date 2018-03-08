@@ -9,3 +9,5 @@ module.exports = function(){
       }
   }
 }
+
+//SET NODE_ENV=local
