@@ -1,7 +1,7 @@
 
 exports.getTodos = function(req, res, next){
 
-    res.json("Todos");
+    res.json("Todos List");
 
 }
 
@@ -23,7 +23,12 @@ exports.updateTodo = function(req, res, next){
 
 exports.createTodo = function(req, res, next){
 
-    res.json("Todo created");
+    var todo = {
+      id: 1,
+      name: "ventura"
+    };
+
+    res.json(todo);
 
 }
 

@@ -1,16 +1,19 @@
 var TodoController            = require('./controllers/todos'),
     AuthController            = require('./controllers/auth'),
+    ArtistController          = require('./controllers/artist'),
+    AlbumController           = require('./controllers/album'),
     express                   = require('express'),
-    passport                  = require('passport'),
-    multer                    = require('multer');
+    passport                  = require('passport');
 
-var requireAuth = passport.authenticate('jwt', {session: false}),
-    requireLogin = passport.authenticate('local', {session: false});
+var requireAuth   = passport.authenticate('jwt', {session: false}),
+    requireLogin  = passport.authenticate('local', {session: false});
 
 module.exports = function(app){
 
     var apiRoutes     = express.Router(),
         authRoutes    = express.Router(),
+        artistRoutes  = express.Router(),
+        albumRoutes   = express.Router(),
         todoRoutes    = express.Router();
 
     // Auth Routes
@@ -25,7 +28,17 @@ module.exports = function(app){
     todoRoutes.put('/:todo_id', TodoController.updateTodo);
     todoRoutes.delete('/:todo_id', TodoController.deleteTodo);
 
+    //Artist routes
+    apiRoutes.use('/artists', artistRoutes);
+    artistRoutes.get('/', ArtistController.getArtists);
+    artistRoutes.post('/', ArtistController.createArtist);
+
+    //Album routes
+    apiRoutes.use('/albums', albumRoutes);
+    albumRoutes.get('/', AlbumController.getAlbums);
+    albumRoutes.post('/', AlbumController.createAlbum);
+
     // Set up routes
-    app.use('/api/v1', apiRoutes);
+    app.use('/v1', apiRoutes);
 
 }
