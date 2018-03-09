@@ -9,8 +9,8 @@ exports.getSongs = function(req, res, next){
       populate('_album').
       populate({
         path: '_album',
-        select: '_artist',
-        populate: { path: '_artist'}
+        select: '_artist images',
+        populate: { path: '_artist', select: 'name'}
       }).
       exec(function (err, songs){
 
