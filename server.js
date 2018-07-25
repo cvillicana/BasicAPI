@@ -7,12 +7,13 @@ var express      = require('express'),
   databaseConfig = require('./config/database'),
   router         = require('./routes');
 
-var connection = mongoose.connect(databaseConfig().url);
+var connection = mongoose.connect(databaseConfig().url, databaseConfig().options);
 
-console.log(mongoose.connection.readyState);
+let db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
 
 app.listen(process.env.PORT || 8080);
-console.log("App listening on port 8080");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -20,3 +21,5 @@ app.use(logger('dev'));
 app.use(cors());
 
 router(app);
+
+module.exports = app;

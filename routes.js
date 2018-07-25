@@ -33,6 +33,7 @@ module.exports = function(app){
     //Artist routes
     apiRoutes.use('/artists', artistRoutes);
     artistRoutes.get('/', ArtistController.getArtists);
+    artistRoutes.get('/:identifier', ArtistController.getArtistByIdentifier);
     artistRoutes.post('/', ArtistController.createArtist);
 
     //Album routes

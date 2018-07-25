@@ -11,3 +11,6 @@ services: mongodb
 cache:
   directories:
   - node_modules
+env:
+  NODE_ENV:
+    dev
