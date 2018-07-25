@@ -7,7 +7,16 @@ module.exports = function(){
            useMongoClient: true
          }
       }
+    case 'dev':
+      return {
+        url: process.env.DATABASE_URL,
+        options: {
+          poolSize: 5,
+          useNewUrlParser: true,
+          user: process.env.USER,
+          pass: process.env.PASS,
+          promiseLibrary: global.Promise
+        }
+      }
   }
 }
-
-//SET NODE_ENV=local

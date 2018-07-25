@@ -8,7 +8,7 @@ exports.getArtists = function(req, res, next){
             res.send(err);
         }
 
-        res.status(200).send(artists);
+        return res.status(200).send(artists);
 
     });
 
@@ -17,6 +17,7 @@ exports.getArtists = function(req, res, next){
 exports.createArtist = function(req, res, next){
 
     var name = req.body.name;
+    var identifier = req.body.identifier;
     var images = req.body.images;
     var genres = req.body.genres;
 
@@ -24,7 +25,11 @@ exports.createArtist = function(req, res, next){
         return res.status(400).send({error: 'You must enter a name'});
     }
 
-    Artist.findOne({name:name}, function(err, existingArtist){
+    if(!identifier){
+        return res.status(400).send({error: 'You must enter an identifier'});
+    }
+
+    Artist.findOne({identifier:identifier}, function(err, existingArtist){
 
         if(err){
             return next(err);
@@ -35,6 +40,7 @@ exports.createArtist = function(req, res, next){
         }
 
         var artist = new Artist({
+          identifier: identifier,
           name: name,
           images: images,
           genres: genres
@@ -46,12 +52,39 @@ exports.createArtist = function(req, res, next){
                 return next(err);
             }
 
-            res.status(201).json({
+            return res.status(200).json({
+              message: "Artist successfully added!",
               artist: artist
             })
         })
     });
+}
 
+exports.getArtistByIdentifier = function(req, res, next){
+
+    var identifier = req.params.identifier;
+
+    if(!identifier){
+        return res.status(400).send({error: 'You must enter an identifier'});
+    }
+
+    Artist.findOne({identifier:identifier}, function(err, artist){
+
+        if(err){
+            return next(err);
+        }
+
+        if(!artist || artist == null){
+          return res.status(404).json({
+            error: "Artist not found"
+          });
+        }
+
+        return res.status(200).json({
+          artist: artist
+        });
+
+    });
 }
 
 exports.deleteArtist = function(req, res, next){
