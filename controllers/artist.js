@@ -28,7 +28,7 @@ exports.createArtist = (req, res, next) => {
       name: name,
       images: images,
       genres: genres,
-      identifier: toLowerCase(removeWhiteSpace(removeSpecialCharecters(this.name)))
+      identifier: toLowerCase(removeWhiteSpace(removeSpecialCharecters(name)))
     });
 
     Artist.findOne({identifier:artist.identifier}, (err, _artist) => {
