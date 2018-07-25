@@ -13,8 +13,8 @@ module.exports = function(){
         options: {
           poolSize: 5,
           useNewUrlParser: true,
-          user: process.env.USER,
-          pass: process.env.PASS,
+          user: process.env.USERDB,
+          pass: process.env.PASSDB,
           promiseLibrary: global.Promise
         }
       }
