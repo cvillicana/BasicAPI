@@ -9,7 +9,7 @@ module.exports = function(){
       }
     case 'dev':
       return {
-        url: process.env.DATABASE_URL,
+        url: 'mongodb://cluster-shard-00-00-copf4.mongodb.net:27017,cluster-shard-00-01-copf4.mongodb.net:27017,cluster-shard-00-02-copf4.mongodb.net:27017/test?ssl=true&replicaSet=cluster-shard-0&authSource=admin',
         options: {
           poolSize: 5,
           useNewUrlParser: true,

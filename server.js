@@ -9,6 +9,10 @@ var express      = require('express'),
 
 var connection = mongoose.connect(databaseConfig().url, databaseConfig().options);
 
+let db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+
 app.listen(process.env.PORT || 8080);
 
 app.use(bodyParser.urlencoded({ extended: false }));
