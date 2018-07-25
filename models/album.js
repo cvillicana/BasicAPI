@@ -11,7 +11,7 @@ var AlbumSchema = new mongoose.Schema({
         url: String
       }
     ],
-    releaseDate: String,
+    releaseDate: Date,
     _artist: { type: mongoose.Schema.Types.ObjectId, ref: 'Artist'}
 
 }, {

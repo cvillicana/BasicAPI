@@ -6,16 +6,12 @@ var ArtistSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    images: [String],
+    genres: [String],
     identifier: {
         type: String,
         required: true
-    },
-    images: [
-      {
-        url:String
-      }
-    ],
-    genres:[String]
+    }
 
 }, {
     timestamps: true
