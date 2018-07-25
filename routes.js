@@ -35,7 +35,6 @@ module.exports = function(app){
     artistRoutes.get('/', ArtistController.getArtists);
     artistRoutes.get('/:identifier', ArtistController.getArtistByIdentifier);
     artistRoutes.post('/', ArtistController.createArtist);
-    artistRoutes.delete('/', ArtistController.deleteAll);
 
     //Album routes
     apiRoutes.use('/albums', albumRoutes);
