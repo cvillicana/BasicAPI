@@ -43,7 +43,7 @@ describe('Artists', () => {
   describe('/POST artist', () => {
 	  it('it should not POST an artist without artist name', (done) => {
 	  	let artist = {
-	  		images:[{url: 'https://i.ytimg.com/vi/_FrOQC-zEog/hqdefault.jpg'}],
+	  		images:['https://i.ytimg.com/vi/_FrOQC-zEog/hqdefault.jpg'],
         genres:['rock']
 	  	}
 			chai.request(server)
@@ -59,7 +59,7 @@ describe('Artists', () => {
 	  	let artist = {
         name: "Pink Floyd",
         identifier: "pinkfloyd",
-        images:[{url: 'https://i.ytimg.com/vi/_FrOQC-zEog/hqdefault.jpg'}],
+        images:['https://i.ytimg.com/vi/_FrOQC-zEog/hqdefault.jpg'],
         genres:['rock']
 	  	}
 			chai.request(server)
@@ -76,7 +76,7 @@ describe('Artists', () => {
 		    });
 	  });
   });
-  
+
  /*
   * Test the /GET/:id route
   */

@@ -9,7 +9,7 @@ exports.getAlbums = function(req, res, next){
             res.send(err);
         }
 
-        res.json(albums);
+        return res.status(200).json(albums);
 
     });
 
