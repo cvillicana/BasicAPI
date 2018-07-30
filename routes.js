@@ -49,4 +49,13 @@ module.exports = function(app){
     // Set up routes
     app.use('/v1', apiRoutes);
 
+    //Not found route
+    apiRoutes.use((req, res, next) => {
+      res.status(404).send("Not found");
+    });
+
+    apiRoutes.get('/', (req, res) => {
+      res.status(200).send('Basic Api V1');
+    })
+
 }
